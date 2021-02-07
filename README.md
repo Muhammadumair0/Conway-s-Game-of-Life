@@ -1,4 +1,4 @@
-# Conway's Game of Life Programming Assignment
+## Conway's Game of Life Programming Assignment
 
 ### Requirements:
 
