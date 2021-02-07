@@ -43,7 +43,7 @@ a {
 }
 
 button,
-input[type=range] {
+input[type=range],input[type=number]  {
   -webkit-appearance: none;
   box-sizing: border-box;
   background: linear-gradient(to bottom, #fff 5%, #f6f6f6 100%);
@@ -55,6 +55,10 @@ input[type=range] {
   padding: 6px 16px;
   vertical-align: middle;
   height: 30px; 
+}
+
+input[type=number] {
+  width: 100px;
 }
 
 button {

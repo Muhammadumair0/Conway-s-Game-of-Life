@@ -30,9 +30,24 @@ function makeBoard(width, height) {
 
 /* Make array of booleans. */
 function makeGrid() {
-  return checkboxes.map(function (checkbox) {
+  return checkboxes.map(function (checkbox, index) {
     return Math.random() < 0.25;
   });
+}
+
+function makeGrid2(value = false) {
+  const config = $("config").value;
+  return value
+    ? checkboxes.map(function (checkbox, index) {
+        return index <= config ? true : false;
+      })
+    : false;
+}
+
+function submit() {
+  grid = makeGrid2(true);
+  updateBoard();
+  nextBtn.focus();
 }
 
 /* Calculate next generation */
@@ -94,7 +109,7 @@ function step() {
 
 /* Loop and Timer */
 let speed = 100;
-const stop = false;
+let stop = false;
 function loop() {
   step();
   if (!stop) {
@@ -105,7 +120,7 @@ function loop() {
 /* Create board */
 const board = $("board");
 const checkboxes = makeBoard(gridWidth, gridHeight);
-let grid = makeGrid();
+let grid = makeGrid2() || makeGrid();
 updateBoard();
 loop();
 
@@ -129,7 +144,7 @@ nextBtn.addEventListener("click", step);
 /* New Button */
 const newBtn = $("new");
 newBtn.addEventListener("click", function () {
-  grid = makeGrid();
+  grid = makeGrid2() || makeGrid();
   updateBoard();
   nextBtn.focus();
 });
